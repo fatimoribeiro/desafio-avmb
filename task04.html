@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heróis Marvel</title>
+
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            background-color: rgb(233, 227, 227);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 60px;
+            color: #f0141e;
+        }
+
+        #herois {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:space-between;
+        }
+
+        img {
+            width: 300px;
+            height: 200px;
+            border-bottom-style: solid;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            background-color: #fff;
+        }
+
+        .personagem {
+            width: 300px;
+            margin: 20px;
+            border-style: solid;
+            border-radius: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Heróis Marvel</h1>
+    <div id="herois"></div>
+
+    <script>
+        const timeStamp = '1669215470';
+        const publicApiKey = 'aec64fc54fddac5e089e3695a6694857';
+        const md5 = '5af480b782bbe19f348097a8ff01a350';
+        const url = `http://gateway.marvel.com/v1/public/characters?ts=${timeStamp}&apikey=${publicApiKey}&hash=${md5}&limit=100`;
+
+        fetch(url).then((response) => {
+            return response.json();
+        }).then((jsonParsed) => {
+            const divHeroi = document.querySelector("#herois");
+
+            jsonParsed.data.results.forEach(element => {
+                const imagemHeroi = element.thumbnail.path + '.' + element.thumbnail.extension;
+                const nomeHeroi = element.name;
+
+                carregaDivHerois(imagemHeroi, nomeHeroi, divHeroi);
+            });
+            console.log(jsonParsed);        
+        });
+
+        function carregaDivHerois(imagemHeroi, nomeHeroi, divAppend) {
+
+            const divPai = document.createElement('div');
+            const divFilho = document.createElement('div');
+            const textField = document.createElement('text');
+            const imgField = document.createElement('img');
+
+            textField.textContent = nomeHeroi;
+            imgField.src = imagemHeroi;
+
+            divFilho.appendChild(imgField);
+            divFilho.appendChild(textField);
+            divPai.appendChild(divFilho);
+            divAppend.appendChild(divPai);
+
+            divPai.classList.add("personagem");
+        }
+    </script>
+</body>
+</html>
