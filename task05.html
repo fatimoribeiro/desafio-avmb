@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Arquivos dos Heróis Marvel</title>
+
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <script>
+        const timeStamp = '1669215470';
+        const publicApiKey = 'aec64fc54fddac5e089e3695a6694857';
+        const md5 = '5af480b782bbe19f348097a8ff01a350';
+        const url = `http://gateway.marvel.com/v1/public/characters?ts=${timeStamp}&apikey=${publicApiKey}&hash=${md5}&limit=100`;
+
+        const fs = require('fs');
+        var folder = './Characters';
+        if (!fs.existsSync(folder)) { fs.mkdirSync(folder); }
+
+        fetch(url).then((response) => {
+            return response.json();
+        }).then((jsonParsed) => {
+            jsonParsed.data.results.forEach(element => {
+                const imagemHeroi = element.thumbnail.path + '.' + element.thumbnail.extension;
+                const nomeHeroi = element.name;
+
+                let FileSaver = require('file-saver');
+                let blob = new Blob([nomeHeroi], {type: "text/plain;charset=utf-8"});
+                let arquivo = new Blob([JSON.stringify(jsonParsed)], { type: 'application/json' });
+                FileSaver.saveAs(folder + '/' + nomeHeroi, ".txt")
+            });
+
+            console.log(jsonParsed);        
+        });
+    </script>
+</body>
+</html>
