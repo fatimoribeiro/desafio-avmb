@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "A7n3vvR6TXOYMdEAN1rdAdWCVdR0Zfm1rW2pFySu9byZm3O0PN2TAqW367s6T3QB6hoETbrGZbbTZJagBxRsEA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\FatimoRibeiro\\Documents\\projetos\\desafio-avmb\\backend\\ConsumoApiAvmb\\ConsumoApiAvmb.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\FatimoRibeiro\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\FatimoRibeiro\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\FatimoRibeiro\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\FatimoRibeiro\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\FatimoRibeiro\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\FatimoRibeiro\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
